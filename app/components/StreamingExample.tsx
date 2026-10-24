@@ -33,10 +33,14 @@ export default function StreamingExample() {
             className="w-full p-3 border border-gray-300 dark:border-zinc-700 rounded-lg bg-white dark:bg-zinc-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-gray-500 dark:placeholder-gray-400 resize-none"
             rows={3}
             disabled={isLoading}
-            onKeyDown={(e) => {
+            onKeyDown={(e: React.KeyboardEvent<HTMLTextAreaElement>) => {
               if (e.key === 'Enter' && e.ctrlKey && !isLoading) {
                 e.preventDefault();
-                handleSubmit(e as React.FormEvent);
+                const form = e.currentTarget.form;
+                if (form) {
+                  const event = new Event('submit', { bubbles: true, cancelable: true });
+                  form.dispatchEvent(event);
+                }
               }
             }}
           />
