@@ -36,7 +36,7 @@ export default function StreamingExample() {
             onKeyDown={(e) => {
               if (e.key === 'Enter' && e.ctrlKey && !isLoading) {
                 e.preventDefault();
-                handleSubmit(e as any);
+                handleSubmit(e as React.FormEvent);
               }
             }}
           />
