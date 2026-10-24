@@ -3,7 +3,7 @@
 import { useCompletion } from '@ai-sdk/react';
 
 export default function StreamingExample() {
-  const { completion, input, handleInputChange, handleSubmit, isLoading } =
+  const { completion, input, handleInputChange, handleSubmit, isLoading, stop } =
     useCompletion({
       api: '/api/completion/stream',
     });
@@ -44,13 +44,24 @@ export default function StreamingExample() {
               }
             }}
           />
-          <button
-            type="submit"
-            disabled={isLoading || !input.trim()}
-            className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-medium"
-          >
-            {isLoading ? 'Streaming...' : 'Send'}
-          </button>
+          <div className="flex gap-3">
+            <button
+              type="submit"
+              disabled={isLoading || !input.trim()}
+              className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed font-medium"
+            >
+              {isLoading ? 'Streaming...' : 'Send'}
+            </button>
+            {isLoading && (
+              <button
+                type="button"
+                onClick={stop}
+                className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 font-medium"
+              >
+                Stop
+              </button>
+            )}
+          </div>
         </form>
       </div>
     </div>
