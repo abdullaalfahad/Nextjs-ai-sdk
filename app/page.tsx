@@ -65,6 +65,19 @@ export default function Home() {
               </div>
             </div>
           </Link>
+
+          {/* Multimodal Card */}
+          <Link href="/multimodal" className="block">
+            <div className="h-full p-6 bg-white dark:bg-zinc-900 rounded-lg shadow hover:shadow-lg hover:scale-105 transition-all duration-200 border border-gray-200 dark:border-zinc-700">
+              <h2 className="text-xl font-bold text-black dark:text-white mb-2">Multimodal</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Upload images and PDFs and ask questions about them
+              </p>
+              <div className="text-blue-600 dark:text-blue-400 font-medium">
+                Go to Multimodal &rarr;
+              </div>
+            </div>
+          </Link>
         </div>
       </main>
     </div>
